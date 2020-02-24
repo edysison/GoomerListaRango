@@ -1,0 +1,22 @@
+{
+  "name": "goomerlistarango",
+  "version": "1.0.0",
+  "description": "Goomer backend challenge",
+  "main": "index.js",
+  "scripts": {
+    "start":"node ./index.js",
+    "test": "jest"
+  },
+  "author": "Eduardo Son",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "is-base64": "^1.0.0",
+    "mongoose": "^5.9.2"
+  },
+  "devDependencies": {
+    "jest": "^25.1.0"
+  }
+}
