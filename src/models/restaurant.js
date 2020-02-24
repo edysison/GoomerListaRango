@@ -17,6 +17,7 @@ const RestaurantSchema = new Schema({
         required: true
     },
     workdays: [{type:workdaySchema, ref:'Restaurant'}],
+    worktime:String,
     created: {
         type: Date,
         default: Date.now

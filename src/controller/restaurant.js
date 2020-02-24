@@ -7,15 +7,17 @@ class RestaurantController {
         let body = req.body
 
         const validateImage = restaurantValidator.Base64(body.picture)
-        if(validateImage.error) return res.status(400).send(validateImage.error)
+        if(validateImage.error) return res.status(400).send(validateImage)
 
         const validateData = restaurantValidator.Workingdays(body.workdays)
-        if(validateData.error) return res.status(400).send(validateData.error)
+        if(validateData.error) return res.status(400).send(validateData)
+
+        body.worktime = restaurantFormater.Workingdays(body.workdays)
 
         body = restaurantFormater.toLowerStrings(body)
 
-        const resp = restaurantRepo.Create(body)
-        if(resp.error) return res.status(500).send(process.env.SERVER_ERR)
+        const resp = await restaurantRepo.Create(body)
+        if(resp.error) return res.status(500).send({error:process.env.SERVER_ERR})
 
         return res.send(resp)
     }
