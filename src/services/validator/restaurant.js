@@ -7,6 +7,11 @@ class RestaurantValidator extends BaseValidator {
     Workingdays(days){
         return super.Workingdays(days)
     }
+    TotalPages(target, total){
+        let error = "Pagina invalida"
+        if (target <= total && target >= 0) error = ""
+        return {error}
+    }
 }
 
 module.exports = new RestaurantValidator()

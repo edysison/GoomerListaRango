@@ -1,5 +1,8 @@
-function BaseRouter(routes, name, controller) {
-    routes.post(`/${name}/`, controller.Create) // Add another currency
+
+function BaseRouter(routes, name, controller, customRoutes) {
+    routes.post(`/${name}/`, controller.Create)
+
+    routes = customRoutes(name, routes)
 
     return routes
 }

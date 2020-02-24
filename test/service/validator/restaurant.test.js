@@ -82,3 +82,12 @@ describe('Validating base function workingdays', () => {
         expect(restaurant.Workingdays(newData)).toStrictEqual({error:"Horario invalido"})
     })
 })
+
+describe('Valid function TotalPages', () => {
+    it('Valid data', () => {
+        expect(restaurant.TotalPages(1, 2)).toStrictEqual({error:""})
+    })
+    it('Invalid data', () => {
+        expect(restaurant.TotalPages(3, 2)).toStrictEqual({error:"Pagina invalida"})
+    })
+})

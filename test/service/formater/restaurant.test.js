@@ -73,3 +73,15 @@ describe('Format function toLowerStrings', () => {
         })
     })
 })
+
+describe('Format function TotalPages', () => {
+    it('Valid data', () => {
+        expect(restaurant.TotalPages(11, 2)).toStrictEqual(2)
+    })
+})
+
+describe('Format function ItemsToSkip', () => {
+    it('Valid data', () => {
+        expect(restaurant.ItemsToSkip(4)).toStrictEqual(40)
+    })
+})
