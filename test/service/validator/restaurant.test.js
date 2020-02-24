@@ -10,6 +10,15 @@ describe('Validating base function Base64', () => {
     })
 })
 
+describe('Valid base function ObjectID', () => {
+    it('Valid data', () => {
+        expect(restaurant.ObjectID("5e517ea30f67170011fba84f")).toStrictEqual({error:""})
+    })
+    it('Invalid data', () => {
+        expect(restaurant.ObjectID("not an object id")).toStrictEqual({error:"ID e invalido"})
+    })
+})
+
 describe('Validating base function workingdays', () => {
     const workingdays = [
         {

@@ -39,6 +39,17 @@ class RestaurantController {
 
         return res.send(resp)
     }
+    async Read(req, res){
+        const id = req.params.id
+
+        const validateID = restaurantValidator.ObjectID(id)
+        if(validateID.error) return res.status(400).send(validateID)
+
+        const restaurant = await restaurantRepo.Read(id)
+        if(!restaurant.data) return res.status(400).send("Id do restaurante e invalido")
+
+        return res.send(restaurant.data)    
+    }
 }
 
 module.exports = new RestaurantController()

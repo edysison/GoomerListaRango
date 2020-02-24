@@ -1,3 +1,4 @@
+const mongoose = require('mongoose')
 const isBase64 = require('is-base64')
 
 class BaseValidator {
@@ -5,6 +6,11 @@ class BaseValidator {
         let error = "Formato da imagem invalida"
         if(isBase64(image, {allowMime: true,allowEmpty: false}))
             error = ""
+        return {error}
+    }
+    ObjectID(id){
+        let error = "ID e invalido"
+        if(mongoose.isValidObjectId(id)) error = ""
         return {error}
     }
     Workingdays(days){
