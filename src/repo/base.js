@@ -19,6 +19,15 @@ class BaseRepo {
             return {error}
         }
     }
+    async Update(body, Schema){
+        try{
+            const mountedProd = new Schema(body)
+            const data = await Schema.updateOne({'_id':body._id},mountedProd)
+            return {data}
+        }catch(error){
+            return {error}
+        }
+    }
 }
 
 module.exports = BaseRepo

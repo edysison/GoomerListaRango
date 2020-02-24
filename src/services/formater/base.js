@@ -1,4 +1,9 @@
 class BaseFormater {
+    FillDate(body, base, date){
+        body.created = base.created
+        body.updated = date
+        return body
+    }
     Workingdays(days){
         let data = {}
         let worktime = ''

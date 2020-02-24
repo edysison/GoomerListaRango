@@ -50,6 +50,33 @@ class RestaurantController {
 
         return res.send(restaurant.data)    
     }
+    async Update(req, res){
+        let body = req.body
+
+        const validateID = restaurantValidator.ObjectID(body._id)
+        if(validateID.error) return res.status(400).send(validateID)
+
+        let restaurant = await restaurantRepo.Read(body._id)
+        if(!restaurant.data) return res.status(400).send("Id do restaurante e invalido")
+
+        const validateImage = restaurantValidator.Base64(body.picture)
+        if(validateImage.error) return res.status(400).send(validateImage)
+
+        const validateData = restaurantValidator.Workingdays(body.workdays)
+        if(validateData.error) return res.status(400).send(validateData)
+
+        body.worktime = restaurantFormater.Workingdays(body.workdays)
+
+        body = restaurantFormater.toLowerStrings(body)
+
+        const todayTime = Date.now
+        body = restaurantFormater.FillDate(body, restaurant.data, todayTime)
+
+        const resp = await restaurantRepo.Update(body)
+        if(resp.error) return res.status(500).send({error:process.env.SERVER_ERR})
+
+        return res.send(resp.data)
+    }
 }
 
 module.exports = new RestaurantController()

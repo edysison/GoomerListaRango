@@ -60,6 +60,23 @@ describe('Format base function Workingdays', () => {
     })
 })
 
+describe('Format function FillDate', () => {
+    const data = {
+        created:"2020-02-24T06:45:00.316Z",
+        updated:"2020-02-24T06:45:00.316Z",
+    }
+    let newData = {...data}
+    let time = '2020-02-24T07:13:02.034Z'
+    it('Normal data', () => {
+        newData = {...data}
+        newData.created = '2020-02-24T07:10:14.230Z'
+        expect(restaurant.FillDate(data, newData, time)).toStrictEqual({
+            created:"2020-02-24T07:10:14.230Z",
+            updated:"2020-02-24T07:13:02.034Z",
+        })
+    })
+})
+
 describe('Format function toLowerStrings', () => {
     const data = {
         name:"Bob Ross",

@@ -8,6 +8,9 @@ class RestaurantFormater extends BaseFormater {
     Workingdays(workingdays){
         return super.Workingdays(workingdays)
     }
+    FillDate(body, restaurant, date){
+        return super.FillDate(body, restaurant, date)
+    }
     toLowerStrings(body){
         body.name = body.name.toLowerCase()
         body.address = body.address.toLowerCase()
