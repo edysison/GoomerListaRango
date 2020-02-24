@@ -27,6 +27,9 @@ class RestaurantRepo extends BaseRepo {
     async Update(data){
         return await super.Update(data, Schema)
     }
+    async Delete(data){
+        return await super.Delete(data, Schema)
+    }
 }
 
 module.exports = new RestaurantRepo()

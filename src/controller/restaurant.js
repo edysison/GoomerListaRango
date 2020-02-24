@@ -77,6 +77,17 @@ class RestaurantController {
 
         return res.send(resp.data)
     }
+    async Delete(req, res){
+        const id = req.params.id
+
+        const validateID = restaurantValidator.ObjectID(id)
+        if(validateID.error) return res.status(400).send(validateID)
+
+        const restaurant = await restaurantRepo.Delete(id)
+        if(restaurant.data.n == 0) return res.status(400).send({error:"Restaurante nao existe"})
+
+        return res.send(restaurant.data)    
+    }
 }
 
 module.exports = new RestaurantController()

@@ -28,6 +28,15 @@ class BaseRepo {
             return {error}
         }
     }
+    async Delete(id, Schema){
+        try{
+            const objId = mongoose.Types.ObjectId(id)
+            const data = await Schema.deleteOne({"_id":objId})
+            return {data}
+        }catch(error){
+            return {error}
+        }
+    }
 }
 
 module.exports = BaseRepo
