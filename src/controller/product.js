@@ -78,7 +78,15 @@ class ProductController {
         return res.send(resp.data)
     }
     async Delete(req, res){
-        return res.send('resp')
+        const id = req.params.id
+
+        const validateID = productValidator.ObjectID(id)
+        if(validateID.error) return res.status(400).send(validateID)
+
+        const product = await productRepo.Delete(id)
+        if(product.data.n == 0) return res.status(400).send({error:"Produto nao existe"})
+
+        return res.send(product.data)
     }
     async List(req, res){
         const id = req.params.id
