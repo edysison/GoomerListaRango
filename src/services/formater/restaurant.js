@@ -11,7 +11,7 @@ class RestaurantFormater extends BaseFormater {
     FillDate(body, restaurant, date){
         return super.FillDate(body, restaurant, date)
     }
-    toLowerStrings(body){
+    ToLowerStrings(body){
         body.name = body.name.toLowerCase()
         body.address = body.address.toLowerCase()
         return body

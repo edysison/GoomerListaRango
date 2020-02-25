@@ -60,7 +60,7 @@ describe('Format base function Workingdays', () => {
     })
 })
 
-describe('Format function FillDate', () => {
+describe('Format base function FillDate', () => {
     const data = {
         created:"2020-02-24T06:45:00.316Z",
         updated:"2020-02-24T06:45:00.316Z",
@@ -77,14 +77,14 @@ describe('Format function FillDate', () => {
     })
 })
 
-describe('Format function toLowerStrings', () => {
+describe('Format function ToLowerStrings', () => {
     const data = {
         name:"Bob Ross",
         address:"Paradise Land",
     }
     it('Normal data', () => {
         let newData = {...data}
-        expect(restaurant.toLowerStrings(newData)).toStrictEqual({
+        expect(restaurant.ToLowerStrings(newData)).toStrictEqual({
             name:"bob ross",
             address:"paradise land",
         })

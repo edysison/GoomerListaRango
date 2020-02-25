@@ -3,24 +3,6 @@ const restaurantFormater = require('../services/formater/restaurant')
 const restaurantValidator = require('../services/validator/restaurant')
 
 class RestaurantController {
-    async PaginateList(req, res){
-        const targetPage = req.params.page - 1
-
-        const total = await restaurantRepo.Count()
-        if(total.error) return res.status(500).send({error:process.env.SERVER_ERR})
-        
-        const pages = restaurantFormater.TotalPages(total.data)
-
-        const validate = restaurantValidator.TotalPages(targetPage, pages)
-        if(validate.error) return res.status(400).send(validate)
-
-        const itemsToSkip = restaurantFormater.ItemsToSkip(targetPage)
-
-        const resp = await restaurantRepo.List(itemsToSkip)
-        if(resp.error) return res.status(500).send({error:process.env.SERVER_ERR})
-
-        return res.send({list:resp.data, pages})
-    }
     async Create(req, res){
         let body = req.body
 
@@ -32,7 +14,7 @@ class RestaurantController {
 
         body.worktime = restaurantFormater.Workingdays(body.workdays)
 
-        body = restaurantFormater.toLowerStrings(body)
+        body = restaurantFormater.ToLowerStrings(body)
 
         const resp = await restaurantRepo.Create(body)
         if(resp.error) return res.status(500).send({error:process.env.SERVER_ERR})
@@ -67,7 +49,7 @@ class RestaurantController {
 
         body.worktime = restaurantFormater.Workingdays(body.workdays)
 
-        body = restaurantFormater.toLowerStrings(body)
+        body = restaurantFormater.ToLowerStrings(body)
 
         const todayTime = Date.now
         body = restaurantFormater.FillDate(body, restaurant.data, todayTime)
@@ -87,6 +69,24 @@ class RestaurantController {
         if(restaurant.data.n == 0) return res.status(400).send({error:"Restaurante nao existe"})
 
         return res.send(restaurant.data)    
+    }
+    async PaginateList(req, res){
+        const targetPage = req.params.page - 1
+
+        const total = await restaurantRepo.Count()
+        if(total.error) return res.status(500).send({error:process.env.SERVER_ERR})
+        
+        const pages = restaurantFormater.TotalPages(total.data)
+
+        const validate = restaurantValidator.TotalPages(targetPage, pages)
+        if(validate.error) return res.status(400).send(validate)
+
+        const itemsToSkip = restaurantFormater.ItemsToSkip(targetPage)
+
+        const resp = await restaurantRepo.List(itemsToSkip)
+        if(resp.error) return res.status(500).send({error:process.env.SERVER_ERR})
+
+        return res.send({list:resp.data, pages})
     }
 }
 

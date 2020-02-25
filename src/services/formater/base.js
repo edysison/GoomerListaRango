@@ -42,6 +42,7 @@ class BaseFormater {
 
         return worktime
     }
+    // private
     _workString(count, start, end, days, worktime, translator){
         let localWorktime = ''
         // Em caso de que nao seja o ultimo registro do array
