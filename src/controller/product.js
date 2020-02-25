@@ -31,7 +31,15 @@ class ProductController {
         return res.send(resp.data)
     }
     async Read(req, res){
-        return res.send('resp')
+        const id = req.params.id
+
+        const validateID = productValidator.ObjectID(id)
+        if(validateID.error) return res.status(400).send(validateID)
+
+        const product = await productRepo.Read(id)
+        if(!product.data) return res.status(400).send("Produto invalido")
+
+        return res.send(product.data)    
     }
     async Update(req, res){
         return res.send('resp')

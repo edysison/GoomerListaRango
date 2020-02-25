@@ -7,6 +7,15 @@ class ProductRepo extends BaseRepo {
     async Create(data){
         return await super.Create(data, ProductSchema)
     }
+    async Read(data){
+        return await super.Read(data, ProductSchema)
+    }
+    async Update(data){
+        return await super.Update(data, ProductSchema)
+    }
+    async Delete(data){
+        return await super.Delete(data, ProductSchema)
+    }
     async VerifyRestaurantID(id){
         try{
             const objId = mongoose.Types.ObjectId(id)
