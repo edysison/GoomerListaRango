@@ -1,22 +1,22 @@
-const Schema = require('../models/restaurant')
+const RestaurantSchema = require('../models/restaurant')
 const BaseRepo = require('./base')
 
 class RestaurantRepo extends BaseRepo {
     async Create(data){
-        return await super.Create(data, Schema)
+        return await super.Create(data, RestaurantSchema)
     }
     async Read(data){
-        return await super.Read(data, Schema)
+        return await super.Read(data, RestaurantSchema)
     }
     async Update(data){
-        return await super.Update(data, Schema)
+        return await super.Update(data, RestaurantSchema)
     }
     async Delete(data){
-        return await super.Delete(data, Schema)
+        return await super.Delete(data, RestaurantSchema)
     }
     async Count(){
         try{
-            const data = await Schema.countDocuments()
+            const data = await RestaurantSchema.countDocuments()
             return {data}
         }catch(error){
             return {error}
@@ -24,7 +24,7 @@ class RestaurantRepo extends BaseRepo {
     }
     async List(itemsToSkip){
         try{
-            const data = await Schema.find().skip(itemsToSkip).limit(10)
+            const data = await RestaurantSchema.find().skip(itemsToSkip).limit(10)
             return {data}
         }catch(error){
             return {error}

@@ -1,11 +1,11 @@
 const mongoose = require('mongoose')
 const BaseRepo = require('./base')
-const Schema = require('../models/product')
+const ProductSchema = require('../models/product')
 const RestaurantSchema = require('../models/restaurant')
 
 class ProductRepo extends BaseRepo {
     async Create(data){
-        return await super.Create(data, Schema)
+        return await super.Create(data, ProductSchema)
     }
     async VerifyRestaurantID(id){
         try{
