@@ -14,6 +14,8 @@ Para usufruir de todas as funcionalidades do programa, tenha instalado o Node.Js
 
 Para rodar os testes com Jest da aplicacao, basta instalar os pacotes do node com "npm install" e acionar o comando "npm test" para acionar todos os scripts de testes.
 
+Para executar os testes de API basta acessar https://explore.postman.com/templates/5770/goomerlistarango para baixar o workspace.
+
 ## Sobre a aplicacao
 
 A aplicacao e dividida em quatro principais componentes: 
