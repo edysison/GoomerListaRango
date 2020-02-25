@@ -39,6 +39,17 @@ class ProductController {
     async Delete(req, res){
         return res.send('resp')
     }
+    async List(req, res){
+        const id = req.params.id
+
+        const verifyRestaurant = await productRepo.VerifyRestaurantID(id)
+        if(!verifyRestaurant.data) return res.status(400).send({error:'Restaurante invalido'})
+
+        const resp = await productRepo.List(id)
+        if(resp.error) return res.status(500).send({error:process.env.SERVER_ERR})
+
+        return res.send(resp.data)
+    }
 }
 
 module.exports = new ProductController()

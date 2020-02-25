@@ -16,6 +16,15 @@ class ProductRepo extends BaseRepo {
             return {error}
         }
     }
+    async List(id){
+        try{
+            const objId = mongoose.Types.ObjectId(id)
+            const data = await ProductSchema.find({'restaurantID':objId})
+            return {data}
+        }catch(error){
+            return {error}
+        }
+    }
 }
 
 module.exports = new ProductRepo()
