@@ -19,7 +19,7 @@ class RestaurantController {
         const resp = await restaurantRepo.Create(body)
         if(resp.error) return res.status(500).send({error:process.env.SERVER_ERR})
 
-        return res.send(resp)
+        return res.send(resp.data)
     }
     async Read(req, res){
         const id = req.params.id
