@@ -4,6 +4,9 @@ class RestaurantValidator extends BaseValidator {
     Base64(image){
         return super.Base64(image)
     }
+    ObjectID(id){
+        return super.ObjectID(id)
+    }
     Workingdays(days){
         return super.Workingdays(days)
     }
