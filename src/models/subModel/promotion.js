@@ -11,5 +11,6 @@ module.exports = new Schema({
     promoPrice:{
         type: Number,
     },
+    worktime: String,
     workingdays:[{type:workdaySchema, ref:'Product'}],
 })

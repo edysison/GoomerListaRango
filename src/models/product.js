@@ -26,7 +26,6 @@ const ProductSchema = new Schema({
         required: true
     },
     promotion: {type:promotionSchema, ref:'Product'},
-    worktime: String,
     created: {
         type: Date,
         default: Date.now

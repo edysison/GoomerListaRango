@@ -18,7 +18,7 @@ class ProductController {
         const validateImage = productValidator.Base64(body.picture)
         if(validateImage.error) return res.status(400).send(validateImage)
 
-        body.worktime = productFormater.Workingdays(body.promotion)
+        body.promotion.worktime = productFormater.Workingdays(body.promotion)
 
         body = productFormater.ToLowerStrings(body)
 
